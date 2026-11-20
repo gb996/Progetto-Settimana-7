@@ -1,7 +1,3 @@
-/* SportsHub — Week Project Settimana VII
-   Reset minimale + tipografia di base. Aggiungi qui le tue regole. */
-
-
 * { box-sizing: border-box; }
 
 body {
@@ -20,18 +16,46 @@ body {
 }
 
 .site-header {
-  background-color: hsl(220, 60%, 25%) !important;
+  background-color: #183363;
   color: white;
   padding: 30px 20px;
   text-align: center;
 }
 
-
-/* Aggiungi qui le tue regole per: form, risultati, card squadra, eventi. */
-.form-ricerca{
+#form-ricerca {
   max-width: 600px;
 }
 
-main{
-  max-width:70%;
+.card-squadra {
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.card-squadra:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.12) !important;
+}
+
+.card-squadra img {
+  object-fit: contain;
+}
+
+#lista-prossimi li:last-child,
+#lista-ultimi li:last-child {
+  border-bottom: 0 !important;
+}
+
+@media (max-width: 575.98px) {
+  .site-header {
+    padding: 20px 12px;
+  }
+}
+
+.riga-evento {
+  cursor: pointer;
+}
+
+.riga-evento:hover,
+.riga-evento:focus-visible {
+  background-color: #eef2f8;
 }

@@ -5,18 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SportsHub</title>
 
-   
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
     />
-   
+
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
 
   <body >
 
-    <header class=" site-header hero text-white text-center justify-content-center py-4 px-3">
+    <header class="site-header">
       <h1 class="fw-bold mb-1">SportsHub</h1>
       <p class="small mb-3">
         Cerca una squadra, scopri prossime partite e ultimi risultati.
@@ -39,7 +38,7 @@
     </header>
 
     <main class="container py-4" >
-      
+
       <div id="spinner" class="text-center my-3 d-none">
         <div class="spinner-border text-primary" role="status">
           <span class="visually-hidden">Caricamento...</span>
@@ -48,7 +47,6 @@
 
       <div id="errore" class="alert alert-danger d-none" role="alert"></div>
 
-     
       <section id="sezione-preferite" class="mb-4">
         <h2 class="h5 fw-bold mb-3">
           <span class="text-warning">&#9733;</span> Le tue squadre preferite
@@ -57,20 +55,31 @@
           Non hai ancora salvato nessuna squadra. Cercane una qui sopra e
           aggiungila ai preferiti.
         </p>
-        
+
         <div id="lista-preferite" class="row g-3"></div>
+      </section>
+
+      <section id="sezione-appuntamenti" class="mb-4 d-none">
+        <h2 class="h5 fw-bold mb-3">📅 I tuoi prossimi appuntamenti</h2>
+        <ul id="lista-appuntamenti" class="list-unstyled bg-white rounded shadow-sm px-3 mb-0"></ul>
       </section>
 
       <section id="sezione-risultati" class="mb-4">
         <h2 class="h5 fw-bold mb-3">Squadre trovate</h2>
+
+        <div id="filtri-sport" class="d-flex flex-wrap gap-2 mb-3" role="group" aria-label="Filtra per sport">
+          <button type="button" class="btn btn-sm btn-outline-primary active" data-sport="tutti" aria-pressed="true">Tutti</button>
+          <button type="button" class="btn btn-sm btn-outline-primary" data-sport="Soccer" aria-pressed="false">Calcio</button>
+          <button type="button" class="btn btn-sm btn-outline-primary" data-sport="Basketball" aria-pressed="false">Basket</button>
+          <button type="button" class="btn btn-sm btn-outline-primary" data-sport="American Football" aria-pressed="false">Football</button>
+        </div>
         <p id="risultati-messaggio" class="small fst-italic text-secondary">
           Inizia cercando una squadra qui sopra.
         </p>
-      
+
         <div id="lista-risultati" class="row g-3"></div>
       </section>
 
-     
       <section id="dettagli" class="card shadow-sm border-0 d-none">
         <div class="card-body">
           <h2 id="dettagli-titolo" class="h5 fw-bold text-primary mb-3"></h2>
@@ -94,13 +103,26 @@
       </section>
     </main>
 
-    
+    <div class="modal fade" id="modal-evento" tabindex="-1" aria-labelledby="modal-evento-titolo" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title h5 fw-bold" id="modal-evento-titolo"></h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+          </div>
+          <div class="modal-body">
+            <dl id="modal-evento-dati" class="row mb-0"></dl>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.min.js"
       integrity="sha384-89aa4glufciPv46aKltztWQEmk+Tu9W2RhzXr6VcnUUEub7F8+06RcL2RYLCOHUq"
       crossorigin="anonymous"
     ></script>
-   
+
     <script src="assets/js/script.js"></script>
   </body>
 </html>
