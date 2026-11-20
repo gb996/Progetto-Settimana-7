@@ -15,9 +15,51 @@
 
 // === Classi ===
 
+// Una squadra: prende l'oggetto "grezzo" dell'API e lo traduce in nomi italiani
+class Squadra {
+  constructor(dati) {
+    this.id = dati.idTeam;
+    this.nome = dati.strTeam;
+    this.logo = dati.strBadge;
+    this.lega = dati.strLeague;
+    this.paese = dati.strCountry;
+    this.sport = dati.strSport; // servirà per il filtro (Versione Avanzata)
+  }
+}
+
+// Un evento (partita passata o futura)
+class Evento {
+  constructor(dati) {
+    this.id = dati.idEvent;
+    this.data = dati.dateEvent; // es. "2026-07-16"
+    this.casa = dati.strHomeTeam;
+    this.trasferta = dati.strAwayTeam;
+    this.punteggioCasa = dati.intHomeScore; // null se non ancora giocata
+    this.punteggioTrasferta = dati.intAwayScore;
+  }
+
+  // "2026-07-16" -> "16/07/2026"
+  dataFormattata() {
+    if (!this.data) return "Data da definire";
+    const formatter = new Intl.DateTimeFormat("it-IT", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
+    return formatter.format(new Date(this.data));
+  }
+
+  // "2 - 1" se c'è il risultato, stringa vuota se la partita non è giocata
+  punteggio() {
+    if (this.punteggioCasa == null || this.punteggioTrasferta == null) return "";
+    return `${this.punteggioCasa} - ${this.punteggioTrasferta}`;
+  }
+}
+
 
 
 // === API ===
+
 
 
 
